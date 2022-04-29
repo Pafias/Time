@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title id="title"></title>
+  </head>
+  <body style="overflow: hidden;">
+    <div id="block">
+      <div id="timediv">
+        <a id="time"></a>
+      </div>
+      <p></p>
+      <div id="datediv">
+        <a id="date"></a>
+      </div>
+    </div>
+  </body>
+  <style>
+    #timediv {
+      font-family: Consolas, Arial, Helvetica, sans-serif;
+      font-size: 120px;
+      text-align: center;
+    }
+    #datediv {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 80px;
+      text-align: center;
+    }
+    #block{
+      position: absolute;
+      display: inline-block;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    body{
+      background-color: rgb(230, 230, 230);
+      color:rgb(32, 32, 32);
+    }
+    .dark-mode {
+      background-color: rgb(32, 32, 32);
+      color:rgb(212, 212, 212);
+    }
+  </style>
+  <script>
+    window.onload = updateTime();
+    window.onload = updateDate();
+    function updateTime() {
+      var date = new Date();
+      document.getElementById("time").innerHTML = date.toLocaleTimeString();
+      document.getElementById("title").innerHTML = date.toLocaleTimeString();
+      setTimeout(updateTime, 1000);
+    }
+    function updateDate() {
+      var date = new Date();
+      document.getElementById("date").innerHTML = date.toLocaleDateString();
+      setTimeout(updateDate, 1000);
+    }
+    function toggleTheme(){
+      var body = document.body;
+      body.classList.toggle("dark-mode");
+    }
+    window.addEventListener("click", toggleTheme);
+  </script>
+</html>
